@@ -32,18 +32,14 @@ public class EditDialogController {
     }
 
     public Employee getResult() {
-        if (editedEmployee != null) {
-            editedEmployee.setName(nameTextField.getText());
-            editedEmployee.setSurname(surnameTextField.getText());
-            editedEmployee.setEmail(emailTextField.getText());
-        }
         return editedEmployee;
     }
 
     public void onSave(ActionEvent event) {
-        if(!nameTextField.getText().isEmpty() || !surnameTextField.getText().isEmpty()) {
-            // TODO: de adaugat birthdate aici
-            result = new Employee(nameTextField.getText(), surnameTextField.getText(), emailTextField.getText());
+        if(editedEmployee != null && (!nameTextField.getText().isEmpty() || !surnameTextField.getText().isEmpty())) {
+            editedEmployee.setName(nameTextField.getText());
+            editedEmployee.setSurname(surnameTextField.getText());
+            editedEmployee.setEmail(emailTextField.getText());
         }
         Node button = (Node)event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
